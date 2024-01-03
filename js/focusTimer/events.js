@@ -20,22 +20,30 @@ export function soundPanel() {
     event.addEventListener("click", (event) => {
       const element = event.currentTarget.dataset.sound;
 
-      sounds.forest.pause();
-      sounds.rain.pause();
-      sounds.coffe.pause();
-      sounds.fireplace.pause();
-
       el.sounds.forEach((el) => {
         el.classList.remove("selected");
       });
       
-      event.currentTarget.classList.add("selected");
       
       if(typeof actions[element] != "function") { 
         return;
       };
+      
 
-      actions[element]();
+      if(state.soundActive) {
+        sounds.forest.pause();
+        sounds.rain.pause();
+        sounds.coffe.pause();
+        sounds.fireplace.pause();
+        state.soundActive = false;
+        console.log(state.soundActive);
+      }else {
+        sounds[element].play();
+        event.currentTarget.classList.add("selected");
+        state.soundActive = true;
+        console.log(state.soundActive);
+      };
+      
     });
   });
 };
