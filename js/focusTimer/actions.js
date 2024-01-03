@@ -41,21 +41,17 @@ export function timeDown() {
 };
 
 export function forest() {
-  state.soundActive = true;
   sounds.forest.play();
 };
 
 export function rain() {
-  state.soundActive = true;
   sounds.rain.play();
 };
 
 export function coffe() {
-  state.soundActive = true;
   sounds.coffe.play();
 };
 
 export function fireplace() {
-  state.soundActive = true;
   sounds.fireplace.play();
 };
